@@ -1,7 +1,7 @@
 if (typeof paulisageek == "undefined") { paulisageek = {}; }
 if (typeof paulisageek.ns == "undefined") { paulisageek.ns = {}; }
 
-// Don't let 2 instances run
+/* Don't let 2 instances run */
 if (typeof paulisageek.ns.addLibs == "undefined") {
 
 if (typeof paulisageek.ns.caseSensitive == "undefined") { paulisageek.ns.caseSensitive = false; }
@@ -24,7 +24,7 @@ paulisageek.ns.nodeSelector = function () {
         return;
     }
 
-    // Incase Firebug isn't installed
+    /* In case Firebug isn't installed */
     if (window.console === undefined) { window.console = {log:function(){}}; }
 
     var mouseover = function(ev) {
@@ -91,18 +91,18 @@ paulisageek.ns.nodeSelector = function () {
             'left': (e.offset().left) + "px"
         }, 250);
     };
-    // $(document).ready(function () {
+    /* $(document).ready(function () { */
         $("*").each(function() {
             $(this)
             .mouseover(mouseover)
             .mouseout(mouseout)
             .click(click);
         });
-    // });
+    /* }); */
     
     var keydown = function(e) {
         if (e.keyCode === undefined && e.charCode !== undefined) { e.keyCode = e.charCode; }
-        // Escape key
+        /* Escape key */
         if (e.keyCode == 27) {
             $("*").each(function(i) {
                 $(this)
@@ -114,7 +114,7 @@ paulisageek.ns.nodeSelector = function () {
             });
             $("#hover").remove();
             $(document).unbind("keydown", keydown);
-            // Kill the namespace
+            /* Kill the namespace */
             delete paulisageek.ns;
         }
     };

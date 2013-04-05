@@ -13,7 +13,8 @@ paulisageek.ns.addLibs = function () {
     }
 
     var node = document.createElement("script");
-    node.src = "http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js";
+    node.src = "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js";
+    /* Was: node.src = "http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"; */
     document.body.appendChild(node);
     paulisageek.ns.nodeSelector();
 };
@@ -78,7 +79,8 @@ paulisageek.ns.nodeSelector = function () {
             .css("position", "absolute")
             .css("display", "inline")
             .css('border', '1px solid black')
-            .css('backgroundColor', 'white')
+            /* http://stackoverflow.com/questions/11060617/what-are-the-default-colors-for-a-hovered-over-elements-title-text-and-backgrou */
+            .css('backgroundColor', '#ffffe1') /* Was: 'white' */
             .css('color', '#333') /* Added: usability on white-on-black pages! */
             .css('padding', '2px')
             .css('width', 'auto') 

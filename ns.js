@@ -79,6 +79,7 @@ paulisageek.ns.nodeSelector = function () {
             .css("display", "inline")
             .css('border', '1px solid black')
             .css('backgroundColor', 'white')
+            .css('color', '#333') /* Added: usability on white-on-black pages! */
             .css('padding', '2px')
             .css('width', 'auto') 
             .css("zIndex", 255)

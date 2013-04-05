@@ -1,7 +1,8 @@
+<?php
+  $bookmarklet_url = getRequestProtocol() .'://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+?>
 <?php print '<?xml version="1.0" encoding="UTF-8"?>' ?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title>nodeSelector Bookmarklet</title>
@@ -25,10 +26,10 @@ javascript:(
    function() { 
       var s=document.createElement("script");
           s.charset="UTF-8";
-          s.src="http://paul.slowgeek.com/nodeSelector/ns.js";
+          s.src="<?php echo $bookmarklet_url ?>ns.js?x="+(Math.random());
       document.body.appendChild(s)
    })();
-'>nodeSelector bookmarklet</a>
+'>nodeSelector bookmarklet</a><!--Added: Math.random-->
 </li><li>
 Visit any webpage.
 </li><li>
@@ -57,3 +58,11 @@ Profit.
     </div>
   </body>
 </html>
+<?php
+
+function getRequestProtocol() {
+  if(!empty($_SERVER['HTTP_X_FORWARDED_PROTO']))
+    return $_SERVER['HTTP_X_FORWARDED_PROTO'];
+  else
+    return !empty($_SERVER['HTTPS']) ? "https" : "http";
+};
